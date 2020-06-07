@@ -1,0 +1,66 @@
+---
+title: "teste"
+author: "Sillas"
+date: "06/06/2020"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introdução
+
+Este é um relatório de análise de dados do Gapminder.
+
+## Data
+
+Este **relatório** foi *produzido* em 06/06/2020.
+
+## Exemplo de código dentro do Rmarkdown
+
+Observe a execução deste código: `r mean(c(1, 3, 5))`
+
+# Códigos no Rmarkdown
+
+Isto é um chunk
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(plotly)
+```
+
+Atalho de teclado para criar um chunk: Ctrl Alt I
+
+```{r, echo = FALSE}
+library(gapminder)
+data("gapminder")
+head(gapminder)
+```
+
+Imagem:
+
+![](https://s2.glbimg.com/8wLaqvUGXEp7GB6HnWa58pElt80=/0x0:1280x960/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2020/O/W/saLqmBRsSBOVaQzhxpTQ/miguel.jpg)
+
+## Gráfico interativo
+
+Isto é um gráfico do ggplot2
+
+```{r}
+gapminder %>% 
+  group_by(year) %>% 
+  summarise(media = mean(lifeExp)) %>% 
+  ggplot(aes(x = year, y = media)) +
+  geom_line()
+```
+
+
+```{r}
+ggplotly()
+```
+
+
+
+
